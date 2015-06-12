@@ -5,6 +5,8 @@
  */
 package dao;
 
+import Factory.ConexionBD;
+import Factory.FactoryConnectionDB;
 import config.Conexion;
 import dto.LogueoDTO;
 import interfaces.InterfaceLogueo;
@@ -12,6 +14,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,9 +28,11 @@ public class LogueoDAO implements InterfaceLogueo{
     private ResultSet rs;
     private String sql="";
 
+    
+       
     @Override
     public int validarUsuario(String usuario, String pass) {
-        
+       
  int x = 0;
        sql ="select *from usuario where usuario='"+
                usuario+"' and "+"clave='"+pass+"'";
@@ -53,7 +58,28 @@ public class LogueoDAO implements InterfaceLogueo{
 
     @Override
     public List<LogueoDTO> listarUsuario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   List<LogueoDTO> lista = new ArrayList<>();
+    sql = "select *from usuario";
+        try {
+            cx = Conexion.getConexion();
+            st = cx.createStatement();
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                LogueoDTO usu = new LogueoDTO();
+                usu.setIdusuario(rs.getInt("idlogueo"));
+                usu.setCargo(rs.getString("cargo"));
+              
+                lista.add(usu);
+            }
+             
+        } catch (SQLException e) {
+        }
+        
+        
+       return lista;        
+        
+
+//To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

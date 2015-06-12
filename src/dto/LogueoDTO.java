@@ -14,14 +14,18 @@ public class LogueoDTO {
     private int idusuario;
     private String usuario;
     private String clave;
+    private String cargo;
 
     public LogueoDTO() {
     }
 
-    public LogueoDTO(String usuario, String clave) {
+    public LogueoDTO(String usuario, String clave, String cargo) {
         this.usuario = usuario;
         this.clave = clave;
+        this.cargo = cargo;
     }
+
+   
 
     public int getIdusuario() {
         return idusuario;
@@ -45,6 +49,14 @@ public class LogueoDTO {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
     
     
