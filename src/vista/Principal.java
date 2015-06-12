@@ -215,8 +215,14 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem10.setText("Recordatorio");
         jMenu6.add(jMenuItem10);
 
+        jMenuItem14.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/usuario.png"))); // NOI18N
         jMenuItem14.setText("Agregar Usuario");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem14);
 
         jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cliente.png"))); // NOI18N
@@ -270,6 +276,17 @@ System.exit(0);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+          UsuarioForm u = new UsuarioForm();
+        jpdfondo.add(u);
+        u.setVisible(true);
+       
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
    public void centrarVentana(JInternalFrame frame){
         int x = (jpdfondo.getWidth() / 2)- (frame.getWidth() / 2); 
         int y = (jpdfondo.getHeight() / 2)- (frame.getHeight() / 2); 

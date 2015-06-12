@@ -21,7 +21,7 @@ public class Conexion {
     private static Connection cx = null;
     private static final String url ="jdbc:mysql://localhost:3306/mydb?zeroDateTimeBehavior=convertToNull";
     private static final String user ="root";
-    private static final String pass ="root";
+    private static final String pass ="";
     private static final String driver ="com.mysql.jdbc.Driver";
     
     public static Connection getConexion() throws SQLException{
