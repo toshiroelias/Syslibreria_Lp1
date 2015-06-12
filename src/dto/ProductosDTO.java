@@ -14,37 +14,34 @@ public class ProductosDTO {
     
     private int idproducto;
     private String producto;
-    private double preciocomp;
-    private int idprecio;
-    private int cantidad;
-    private int idlogueo;
+    private String serie;      
+    private String marca;
+    private String cantegoria;
     private String fecharegis;
     private String fechaven;
-    private String cantegoria;
-    private String serie;
-    private String marca;
+    private int cantidad;
+    private double preciocomp;
+    private int idlogueo;
+    private int idprecio; 
 
     public ProductosDTO() {
                 
     }
 
-    public ProductosDTO(String producto, double preciocomp, int idprecio, int cantidad, int idlogueo, String fecharegis, String fechaven, String cantegoria, String serie, String marca) {
+    public ProductosDTO(String producto, String serie, String marca, String cantegoria, String fecharegis, String fechaven, int cantidad, double preciocomp, int idlogueo, int idprecio) {
         this.producto = producto;
-        this.preciocomp = preciocomp;
-        this.idprecio = idprecio;
-        this.cantidad = cantidad;
-        this.idlogueo = idlogueo;
-        this.fecharegis = fecharegis;
-        this.fechaven = fechaven;
-        this.cantegoria = cantegoria;
         this.serie = serie;
         this.marca = marca;
+        this.cantegoria = cantegoria;
+        this.fecharegis = fecharegis;
+        this.fechaven = fechaven;
+        this.cantidad = cantidad;
+        this.preciocomp = preciocomp;
+        this.idlogueo = idlogueo;
+        this.idprecio = idprecio;
     }
 
-  
-   
-
-    
+      
 
     public int getIdproducto() {
         return idproducto;

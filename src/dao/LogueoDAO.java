@@ -29,11 +29,11 @@ public class LogueoDAO implements InterfaceLogueo{
     
        
     @Override
-    public int validarUsuario(String usuario, String pass) {
+    public int validarUsuario(String usuario, String pass, String cargo) {
        
  int x = 0;
        sql ="select *from usuario where usuario='"+
-               usuario+"' and "+"clave='"+pass+"'";
+               usuario+"' and "+"clave='"+pass+"' and "+"cargo='"+cargo+"'";
         try {
             cx = Conexion.getConexion();
             st = cx.createStatement();

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface InterfaceLogueo {
     
-     public int validarUsuario(String usuario, String pass);
+     public int validarUsuario(String usuario, String pass, String cargo);
      public int verificarUsuario(String usuario);
      public List<LogueoDTO> listarUsuario();
     public boolean agregarUsuario(LogueoDTO usuario);

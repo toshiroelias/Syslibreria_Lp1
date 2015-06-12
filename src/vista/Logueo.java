@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Logueo extends javax.swing.JFrame {
    private LogueoDAO aO = new LogueoDAO();
-String usuario, pass; 
+String usuario, pass, cargo; 
 
 private InterfaceLogueo log = new LogueoDAO();
 
@@ -181,6 +181,8 @@ private List<LogueoDTO> listal = new ArrayList<>();
          boolean op = true;
         usuario = txtUser.getText();        
         pass = new String(txtpass.getPassword());
+        cargo = cbpcargo.getSelectedItem().toString();
+        
         if(usuario==null || usuario.equals("")){
             op=false;
             JOptionPane.showMessageDialog(null, "Ingresar usuario..!!");
@@ -191,7 +193,7 @@ private List<LogueoDTO> listal = new ArrayList<>();
         }
         
         if(op){
-            if(aO.validarUsuario(usuario, pass)==1){
+            if(aO.validarUsuario(usuario, pass, cargo)==1){
                 JOptionPane.showMessageDialog(null, "Exito..!!");
                 Principal p = new Principal();
                 this.dispose();
@@ -206,13 +208,23 @@ private List<LogueoDTO> listal = new ArrayList<>();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnIngresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresar1ActionPerformed
-System.exit(WIDTH);
+System.exit(0);
         
 // TODO add your handling code here:
     }//GEN-LAST:event_btnIngresar1ActionPerformed
 
+    
     private void cbpcargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbpcargoActionPerformed
-
+  
+//   if(cboproducto.getSelectedIndex()>0){
+//            String item = cboproducto.getSelectedItem().toString();
+//            txtidproducto.setText(""+pro.buscarProducto(item));
+//           
+//                       
+//               
+//    }
+//           
+       
         
 // TODO add your handling code here:
     }//GEN-LAST:event_cbpcargoActionPerformed
