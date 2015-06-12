@@ -15,9 +15,9 @@ import java.util.List;
 public interface InterfaceProducto {
     
     public List<ProductosDTO> listarProducto();
-    public boolean agregarProducto(ProductosDTO productos);
-    public boolean editarProducto(ProductosDTO productos);
+    public boolean agregarProducto(ProductosDTO p);
+    public boolean editarProducto(ProductosDTO p);
     public boolean eliminarProducto(int id);
-    public ProductosDTO buscarProducto(String productos);
+    public ProductosDTO buscarProducto(String p);
     
 }

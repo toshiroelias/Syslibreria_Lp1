@@ -59,7 +59,7 @@ public class Productoform extends javax.swing.JInternalFrame {
             datos[4]=lista.get(i).getCantegoria();
             datos[5]=lista.get(i).getFecharegis();
             datos[6]=lista.get(i).getCantidad();
-            datos[7]=lista.get(i).getFechavenc();
+            datos[7]=lista.get(i).getFechaven();
             datos[8]=lista.get(i).getPreciocomp();
             datos[9]=lista.get(i).getIdlogueo();
             datos[10]=lista.get(i).getIdprecio();
@@ -494,7 +494,7 @@ public class Productoform extends javax.swing.JInternalFrame {
     private void tbproductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbproductoMouseClicked
 if(tbproducto.getSelectedRow()>=0){
             int fila = tbproducto.getSelectedRow();
-           
+            
             txtproducto.setText(tbproducto.getValueAt(fila, 1).toString());
             txtserie.setText(tbproducto.getValueAt(fila, 2).toString());
             txtmarca.setText(tbproducto.getValueAt(fila, 3).toString());
@@ -531,7 +531,7 @@ if(tbproducto.getSelectedRow()>=0){
                 p.setIdprecio(idprec);
                 p.setCantidad(cant);
                 p.setFecharegis(fecharegis);
-                p.setFechavenc(fechaven);
+                p.setFechaven(fechaven);
                 p.setCantegoria(categoria);
                 p.setSerie(serie);
                 p.setMarca(marca);

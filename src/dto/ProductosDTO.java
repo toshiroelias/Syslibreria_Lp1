@@ -94,11 +94,11 @@ public class ProductosDTO {
         this.fecharegis = fecharegis;
     }
 
-    public String getFechavenc() {
+    public String getFechaven() {
         return fechaven;
     }
 
-    public void setFechavenc(String fechavenc) {
+    public void setFechaven(String fechavenc) {
         this.fechaven = fechavenc;
     }
 

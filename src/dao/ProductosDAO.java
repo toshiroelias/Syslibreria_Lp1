@@ -67,7 +67,7 @@ public class ProductosDAO implements InterfaceProducto {
                 p.setIdprecio(rs.getInt("idprecio"));
                 p.setCantidad(rs.getInt("cantidad"));
                 p.setFecharegis(rs.getString("fecha_registro"));
-                p.setFechavenc(rs.getString("fecha_venta"));
+                p.setFechaven(rs.getString("fecha_venta"));
                 p.setCantegoria(rs.getString("categoria"));
                 p.setSerie(rs.getString("numero_serie"));
                 p.setIdlogueo(rs.getInt("idLOGUEO"));
@@ -86,20 +86,19 @@ public class ProductosDAO implements InterfaceProducto {
     }
 
     @Override
-    public boolean agregarProducto(ProductosDTO productos) {
+    public boolean agregarProducto(ProductosDTO p) {
        boolean op = false;
         sql="insert into producto(idproducto, producto, numero_serie, marca, categoria, fecha_registro, fecha_venta, "
-            + "cantidad, precio_compra, idLOGUEO, idprecio ) values( null, '"+productos.getProducto()
-            
-                 +"', '"+productos.getSerie()
-                +"', '"+productos.getMarca()
-                 +"', '"+productos.getCantegoria()
-                 +"', '"+productos.getFecharegis()
-                +"', '"+productos.getFechavenc()
-                 +"', "+productos.getCantidad()
-               +", "+productos.getPreciocomp()
-                 +", "+productos.getIdlogueo()
-            +", "+productos.getIdprecio()+")";      
+            + "cantidad, precio_compra, idLOGUEO, idprecio ) values( null, '"+p.getProducto()
+             +"', '"+p.getSerie()
+                +"', '"+p.getMarca()
+                 +"', '"+p.getCantegoria()
+                 +"', '"+p.getFecharegis()
+                +"', '"+p.getFechaven()
+                 +"', "+p.getCantidad()
+               +", "+p.getPreciocomp()
+                 +", "+p.getIdlogueo()
+            +", "+p.getIdprecio()+")";      
     
         try {
             cx = Conexion.getConexion();
@@ -121,7 +120,7 @@ public class ProductosDAO implements InterfaceProducto {
             +", idprecio="+productos.getIdprecio()
             +", cantidad="+productos.getCantidad()
             +", fecha_registro='"+productos.getFecharegis()
-            +"', fecha_venta='"+productos.getFechavenc()
+            +"', fecha_venta='"+productos.getFechaven()
             +"', categoria='"+productos.getCantegoria()
             +"', serie='"+productos.getSerie()
             +"', idLOGUEO="+productos.getIdlogueo()
