@@ -76,7 +76,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="0" attributes="0">
@@ -132,6 +132,17 @@
                               <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtprecio" min="-2" pref="138" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtprecio_compra" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                                      <Component id="txtcantidad" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jComboBox1" min="-2" pref="174" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
@@ -140,17 +151,8 @@
                           <Component id="btnmodificarproducto" min="-2" pref="168" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                           <Component id="btnquitarproducto" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtprecio" min="-2" pref="138" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtprecio_compra" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
-                              <Component id="txtcantidad" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jComboBox1" min="-2" pref="174" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="btncargartabla" min="-2" pref="127" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="76" max="32767" attributes="0"/>
@@ -222,8 +224,9 @@
                       <Component id="btnmodificarproducto" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
                       <Component id="btnquitarproducto" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnañadirproducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btncargartabla" min="-2" pref="57" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -390,6 +393,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="idlogueo"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btncargartabla">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CARGAR TABLA"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncargartablaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

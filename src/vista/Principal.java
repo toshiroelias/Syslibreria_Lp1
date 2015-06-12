@@ -9,6 +9,7 @@ import com.l2fprod.gui.plaf.skin.SkinLookAndFeel;
 import dao.ImagenFondo;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 /**
@@ -264,12 +265,23 @@ System.exit(0);
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
         Productoform p = new Productoform();
-        jpdfondo.add(p);
-        p.setVisible(true);
+        centrarVentana(p);
+       
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+   public void centrarVentana(JInternalFrame frame){
+        int x = (jpdfondo.getWidth() / 2)- (frame.getWidth() / 2); 
+        int y = (jpdfondo.getHeight() / 2)- (frame.getHeight() / 2); 
+        if(frame.isShowing()){
+            frame.setLocation(x, y);
+        }else{
+        jpdfondo.add(frame);
+        frame.setLocation(x, y);
+        frame.show();
+    }
 
+}
     /**
      * @param args the command line arguments
      */

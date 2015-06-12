@@ -206,7 +206,9 @@ private List<LogueoDTO> listal = new ArrayList<>();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnIngresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresar1ActionPerformed
-        // TODO add your handling code here:
+System.exit(WIDTH);
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_btnIngresar1ActionPerformed
 
     private void cbpcargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbpcargoActionPerformed

@@ -5,8 +5,6 @@
  */
 package dao;
 
-import Factory.ConexionBD;
-import Factory.FactoryConnectionDB;
 import config.Conexion;
 import dto.LogueoDTO;
 import interfaces.InterfaceLogueo;

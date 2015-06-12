@@ -5,7 +5,7 @@
  */
 package dao;
 
-import Factory.ConexionBD;
+
 import dto.PrecioDTO;
 import interfaces.InterfacePrecio;
 import java.util.List;
@@ -17,8 +17,7 @@ import java.util.List;
 public class PrecioDAO implements InterfacePrecio{
 
     //conexion::::
-    ConexionBD conex;
-    String sql;
+   
     //fin
     
    //cargando en el array list::::

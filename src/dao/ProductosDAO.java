@@ -5,7 +5,7 @@
  */
 package dao;
 
-import Factory.ConexionBD;
+
 import config.Conexion;
 import dto.ProductosDTO;
 import interfaces.InterfaceProducto;
@@ -15,7 +15,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,7 +41,7 @@ public class ProductosDAO implements InterfaceProducto {
        public ArrayList<ProductosDTO> getLista(){
            return lista;
        }
-        public void agregarproducto(ProductosDTO dto){
+        public void añadirproducto(ProductosDTO dto){
             lista.add(dto);
         }
     
@@ -54,7 +53,7 @@ public class ProductosDAO implements InterfaceProducto {
     public List<ProductosDTO> listarProducto() {
     
  List<ProductosDTO> lista = new ArrayList<>();
-        sql = "select *from producto";
+        sql = "select * from producto";
         try {
             cx = Conexion.getConexion();
             st = cx.createStatement();
@@ -88,17 +87,16 @@ public class ProductosDAO implements InterfaceProducto {
     @Override
     public boolean agregarProducto(ProductosDTO p) {
        boolean op = false;
-        sql="insert into producto(idproducto, producto, numero_serie, marca, categoria, fecha_registro, fecha_venta, "
-            + "cantidad, precio_compra, idLOGUEO, idprecio ) values( null, '"+p.getProducto()
-             +"', '"+p.getSerie()
-                +"', '"+p.getMarca()
-                 +"', '"+p.getCantegoria()
-                 +"', '"+p.getFecharegis()
-                +"', '"+p.getFechaven()
-                 +"', "+p.getCantidad()
-               +", "+p.getPreciocomp()
-                 +", "+p.getIdlogueo()
-            +", "+p.getIdprecio()+")";      
+        sql="insert into producto(idproducto, producto, numero_serie, marca, categoria, fecha_registro, fecha_venta, cantidad, precio_compra, idLOGUEO, idprecio) values( null,'"+p.getProducto()
+            +"', '"+p.getSerie()
+            +"', '"+p.getMarca()
+            +"', '"+p.getCantegoria()
+            +"', '"+p.getFecharegis()
+            +"', '"+p.getFechaven()
+            +"', "+p.getCantidad()
+            +", "+p.getPreciocomp()
+            +", "+p.getIdlogueo()
+            +", "+p.getIdprecio()+")";       
     
         try {
             cx = Conexion.getConexion();
@@ -112,20 +110,20 @@ public class ProductosDAO implements InterfaceProducto {
     }
 
     @Override
-    public boolean editarProducto(ProductosDTO productos) {
+    public boolean editarProducto(ProductosDTO p) {
          boolean op = false;
-        sql="update producto set = idproducto"+productos.getIdproducto()
-             +",producto =  '"+productos.getProducto()
-            +"', precio_compra="+productos.getPreciocomp()
-            +", idprecio="+productos.getIdprecio()
-            +", cantidad="+productos.getCantidad()
-            +", fecha_registro='"+productos.getFecharegis()
-            +"', fecha_venta='"+productos.getFechaven()
-            +"', categoria='"+productos.getCantegoria()
-            +"', serie='"+productos.getSerie()
-            +"', idLOGUEO="+productos.getIdlogueo()
-            +", marca='"+productos.getMarca()
-            +"' where idproducto="+productos.getIdproducto();
+        sql="update producto set = idproducto"+p.getIdproducto()
+             +",producto =  '"+p.getProducto()
+            +"', precio_compra="+p.getPreciocomp()
+            +", idprecio="+p.getIdprecio()
+            +", cantidad="+p.getCantidad()
+            +", fecha_registro='"+p.getFecharegis()
+            +"', fecha_venta='"+p.getFechaven()
+            +"', categoria='"+p.getCantegoria()
+            +"', serie='"+p.getSerie()
+            +"', idLOGUEO="+p.getIdlogueo()
+            +", marca='"+p.getMarca()
+            +"' where idproducto="+p.getIdproducto();
          try {
             cx = Conexion.getConexion();
             st = cx.createStatement();
@@ -144,7 +142,7 @@ public class ProductosDAO implements InterfaceProducto {
     }
 
     @Override
-    public ProductosDTO buscarProducto(String productos) {
+    public ProductosDTO buscarProducto(String p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -10,7 +10,6 @@ import dao.ProductosDAO;
 import dto.ProductosDTO;
 import java.util.ArrayList;
 import java.util.List;
-import javax.accessibility.AccessibleState;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -39,12 +38,34 @@ public class Productoform extends javax.swing.JInternalFrame {
     //fin:::::::::::
     public Productoform() {
         initComponents();
-        cargarTabla();
-        setLocation(400, 15);
-    }
+            }
     
-    //metodo para cargar la tabla:::::::::::::::
+    //metodo para cargar la tabla al array:::::::::::::::
 
+    public  void cargarTableArray(){
+        
+         dtm = (DefaultTableModel) tbproducto.getModel();
+        lista = dAO.getLista();       
+        Object []datos = new Object[11];
+        for (int i=0 ; i<lista.size(); i++){
+            
+            datos[0]=i+1;
+            datos[1]=lista.get(i).getProducto();
+            datos[2]=lista.get(i).getSerie();
+            datos[3]=lista.get(i).getMarca();
+            datos[4]=lista.get(i).getCantegoria();
+            datos[5]=lista.get(i).getFecharegis();
+            datos[6]=lista.get(i).getCantidad();
+            datos[7]=lista.get(i).getFechaven();
+            datos[8]=lista.get(i).getPreciocomp();
+            datos[9]=lista.get(i).getIdlogueo();
+            datos[10]=lista.get(i).getIdprecio();
+            dtm.addRow(datos);
+            
+        }
+        tbproducto.setModel(dtm);
+    }
+     //cargar la tabla de la base de datos:::::::::::
     public  void cargarTabla(){
         
          dtm = (DefaultTableModel) tbproducto.getModel();
@@ -114,6 +135,7 @@ public class Productoform extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         txtloge = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        btncargartabla = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbproducto = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -198,6 +220,13 @@ public class Productoform extends javax.swing.JInternalFrame {
 
         jLabel12.setText("idlogueo");
 
+        btncargartabla.setText("CARGAR TABLA");
+        btncargartabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncargartablaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -246,22 +275,24 @@ public class Productoform extends javax.swing.JInternalFrame {
                             .addComponent(jLabel9)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel11)))
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtprecio_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(btnañadirproducto)
                         .addGap(33, 33, 33)
                         .addComponent(btnmodificarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(78, 78, 78)
-                        .addComponent(btnquitarproducto)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtprecio_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnquitarproducto)
+                        .addGap(46, 46, 46)
+                        .addComponent(btncargartabla, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -315,8 +346,9 @@ public class Productoform extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnmodificarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnquitarproducto)
-                    .addComponent(btnañadirproducto))
-                .addGap(0, 11, Short.MAX_VALUE))
+                    .addComponent(btnañadirproducto)
+                    .addComponent(btncargartabla, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11))
         );
 
         tbproducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -428,28 +460,48 @@ public class Productoform extends javax.swing.JInternalFrame {
 
     private void btnañadirproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnañadirproductoActionPerformed
         
+        
+       String producto = txtproducto.getText();
+       double preciocomp = Double.parseDouble(txtprecio_compra.getText());
+       int  idprec = Integer.parseInt(txtprecio.getText());
+       int cant = Integer.parseInt(txtcantidad.getText());
+       String fecharegis = txtfe.getText();
+       String fechaven = txtfech_vent.getText();
+       String categoria = txtcategoria.getText();
+       String serie = txtserie.getText();
+       String marca = txtmarca.getText();
+       int idlogueo = Integer.parseInt(txtloge.getText());
+        p = new ProductosDTO(producto, preciocomp, idprec, cant, idlogueo ,fecharegis,fechaven, categoria, serie ,marca);
+        dAO.añadirproducto(p);
+        
+        cargarTableArray();
+        limpiarTabla();
+        cargarTableArray();
+        
+        
+        
         //añadir producto::::::::::::::
         
-        product = txtproducto.getText();
-        preciocomp = Double.parseDouble(txtprecio_compra.getText());
-        idprec = Integer.parseInt(txtprecio.getText());
-        cant = Integer.parseInt(txtcantidad.getText());
-        fecharegis = txtfe.getText();
-        fechaven = txtfech_vent.getText();
-        categoria = txtcategoria.getText();
-        serie = txtserie.getText();
-        marca = txtmarca.getText();
-        idlogueo = Integer.parseInt(txtloge.getText());
-                        
-       p = new ProductosDTO(product, preciocomp, idprec, cant, idlogueo ,fecharegis,fechaven, categoria, serie ,marca);
-        
-        if(dAO.agregarProducto(p)){
-            JOptionPane.showMessageDialog(null, "producto registrado!!");
-            limpiarTabla();
-            cargarTabla();
-        }else{
-            JOptionPane.showMessageDialog(null, "producto no registrado!!");
-        };
+//       String product = txtproducto.getText();
+//       double preciocomp = Double.parseDouble(txtprecio_compra.getText());
+//       int  idprec = Integer.parseInt(txtprecio.getText());
+//        int cant = Integer.parseInt(txtcantidad.getText());
+//       String fecharegis = txtfe.getText();
+//       String fechaven = txtfech_vent.getText();
+//       String categoria = txtcategoria.getText();
+//        String serie = txtserie.getText();
+//       String marca = txtmarca.getText();
+//       int idlogueo = Integer.parseInt(txtloge.getText());
+//                        
+//       p = new ProductosDTO(product, preciocomp, idprec, cant, idlogueo ,fecharegis,fechaven, categoria, serie ,marca);
+//        
+//        if(dAO.agregarProducto(p)){
+//            JOptionPane.showMessageDialog(null, "producto registrado!!");
+//            limpiarTabla();
+//            cargarTabla();
+//        }else{
+//            JOptionPane.showMessageDialog(null, "producto no registrado!!");
+//        }
 //        
 
 // TODO add your handling code here:
@@ -493,19 +545,11 @@ public class Productoform extends javax.swing.JInternalFrame {
 
     private void tbproductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbproductoMouseClicked
 if(tbproducto.getSelectedRow()>=0){
-            int fila = tbproducto.getSelectedRow();
-            
+   
+            int fila = tbproducto.getSelectedRow(); 
             txtproducto.setText(tbproducto.getValueAt(fila, 1).toString());
-            txtserie.setText(tbproducto.getValueAt(fila, 2).toString());
-            txtmarca.setText(tbproducto.getValueAt(fila, 3).toString());
-            txtcategoria.setText(tbproducto.getValueAt(fila, 4).toString());
-            txtfe.setText(tbproducto.getValueAt(fila, 5).toString());
-            txtfech_vent.setText(tbproducto.getValueAt(fila, 6).toString());
-            txtcantidad.setText(tbproducto.getValueAt(fila, 7).toString());
-            txtprecio_compra.setText(tbproducto.getValueAt(fila, 8).toString());
-            txtloge.setText(tbproducto.getValueAt(fila, 9).toString());
-            txtprecio.setText(tbproducto.getValueAt(fila, 10).toString());                   
-            
+            txtidproducto.setText(tbproducto.getValueAt(fila, 0).toString());
+            txtfe.setText(tbproducto.getValueAt(fila, 3).toString());
             id = Integer.parseInt(tbproducto.getValueAt(fila, 0).toString());
         }
         
@@ -549,11 +593,18 @@ if(tbproducto.getSelectedRow()>=0){
 // TODO add your handling code here:
     }//GEN-LAST:event_btnmodificarproductoActionPerformed
 
+    private void btncargartablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargartablaActionPerformed
+//cargando tabla::::::::::
+        cargarTabla();
+ 
+    }//GEN-LAST:event_btncargartablaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnaceptar;
     private javax.swing.JButton btnañadirproducto;
     private javax.swing.JButton btncancelar;
+    private javax.swing.JButton btncargartabla;
     private javax.swing.JButton btnmodificarproducto;
     private javax.swing.JButton btnquitarproducto;
     private javax.swing.JComboBox jComboBox1;
