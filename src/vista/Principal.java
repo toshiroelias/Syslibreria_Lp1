@@ -53,8 +53,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -168,12 +168,17 @@ public class Principal extends javax.swing.JFrame {
         jMenu4.setText(" Reportes");
         jMenu4.setFont(new java.awt.Font("Broadway", 1, 24)); // NOI18N
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/informe de venta.png"))); // NOI18N
-        jMenuItem6.setText("Informe Ventas");
-        jMenu4.add(jMenuItem6);
-
         jMenuItem13.setText("Productos mas vendidos");
         jMenu4.add(jMenuItem13);
+
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/informe de venta.png"))); // NOI18N
+        jMenuItem6.setText("Informe Ventas");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem6);
 
         jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/estadisticas_gr.png"))); // NOI18N
         jMenuItem15.setText("Grafico Estadistico de ventas ");
@@ -227,6 +232,16 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cliente.png"))); // NOI18N
         jMenuItem19.setText("Registrar Cliente");
+        jMenuItem19.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jMenuItem19ItemStateChanged(evt);
+            }
+        });
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem19);
 
         jMenuBar1.add(jMenu6);
@@ -287,7 +302,24 @@ System.exit(0);
         
         
     }//GEN-LAST:event_jMenuItem14ActionPerformed
-   public void centrarVentana(JInternalFrame frame){
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+
+       
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenuItem19ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jMenuItem19ItemStateChanged
+        // TODO add youhandling code here:
+    }//GEN-LAST:event_jMenuItem19ItemStateChanged
+  
+    
+    
+    
+    public void centrarVentana(JInternalFrame frame){
         int x = (jpdfondo.getWidth() / 2)- (frame.getWidth() / 2); 
         int y = (jpdfondo.getHeight() / 2)- (frame.getHeight() / 2); 
         if(frame.isShowing()){

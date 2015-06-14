@@ -84,11 +84,11 @@ public class UsuarioForm extends javax.swing.JInternalFrame {
         txtusuario = new javax.swing.JTextField();
         txtclave = new javax.swing.JTextField();
         btnagregar = new javax.swing.JButton();
-        tbmodificar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbusuario = new javax.swing.JTable();
+        tbmodificar = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de Usuario"));
 
@@ -125,7 +125,7 @@ public class UsuarioForm extends javax.swing.JInternalFrame {
                     .addComponent(txtcargo)
                     .addComponent(txtusuario)
                     .addComponent(txtclave, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,13 +164,6 @@ public class UsuarioForm extends javax.swing.JInternalFrame {
             }
         });
 
-        tbmodificar.setText("Modifcar");
-        tbmodificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbmodificarActionPerformed(evt);
-            }
-        });
-
         jButton3.setText("jButton3");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +188,13 @@ public class UsuarioForm extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tbusuario);
 
+        tbmodificar.setText("Editar");
+        tbmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbmodificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -205,12 +205,13 @@ public class UsuarioForm extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tbmodificar)
-                            .addComponent(btnagregar)
                             .addComponent(jButton3)
-                            .addComponent(jButton4))))
+                            .addComponent(jButton4)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tbmodificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnagregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -220,16 +221,16 @@ public class UsuarioForm extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(btnagregar)
-                        .addGap(27, 27, 27)
+                        .addGap(18, 18, 18)
                         .addComponent(tbmodificar)
-                        .addGap(27, 27, 27)
+                        .addGap(36, 36, 36)
                         .addComponent(jButton3)
                         .addGap(27, 27, 27)
                         .addComponent(jButton4))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -246,7 +247,7 @@ public class UsuarioForm extends javax.swing.JInternalFrame {
         String Nombre = txtnombre.getText();
         String cargo = txtcargo.getText();
          
-//        u = new UsuarioDTO(Idlogueo, Usuario, clave, Apellido, Nombre, cargo);
+        u = new UsuarioDTO(Idlogueo, Usuario, clave, Apellido, Nombre, cargo);
         
          if(dAO.agregarUsuario(u)){
              JOptionPane.showMessageDialog(null, "usuario registrado");
@@ -264,25 +265,25 @@ public class UsuarioForm extends javax.swing.JInternalFrame {
 
     private void tbmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbmodificarActionPerformed
 
-         Idlogueo = txtIdlogueo.getText();
+        int Idlogueo = Integer.parseInt(txtIdlogueo.getText());
         Usuario = txtusuario.getText();
         clave = txtclave.getText();
         Apellido = txtapellido.getText();
         Nombre = txtnombre.getText();
         cargo = txtcargo.getText();
-        u.setId(id);    
-        u.setNombres(nombre);
-        u.setApellidos(apellidos);
-        u.setUser(user);
-        u.setPass(pass);
-        u.setEstado(estado);
+        u.setIdlogueo(Idlogueo);    
+        u.setUsario(Usuario);
+        u.setClave(clave);
+        u.setApellido(Apellido);
+        u.setCargo(cargo);
+        u.setNombre(Nombre);
         
-         JOptionPane.showMessageDialog(null, id);
+         JOptionPane.showMessageDialog(null, u);
         //u = new Usuario(nombre, apellidos, user, pass, estado);
-        if(dAO.modificarUser(u)){
+        if(dAO.editarUsuario(u)){
             JOptionPane.showMessageDialog(null, "Usuario Modificado!!");
-            limpiarTabla();
-            cargarTable();
+            LimpiarTabla();
+            cargarTabla();
         }else{
             JOptionPane.showMessageDialog(null, "Usuario no Modificado!!");
         }

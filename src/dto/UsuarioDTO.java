@@ -23,9 +23,16 @@ public class UsuarioDTO {
                 
     }
 
-    public UsuarioDTO(String Idlogueo, String Usuario, String Clave, String Apellido, String Nombre, String cargo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public UsuarioDTO(int idlogueo, String usuario, String clave, String apellido, String nombre, String cargo) {
+        this.idlogueo = idlogueo;
+        this.usuario = usuario;
+        this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.cargo = cargo;
     }
+
+   
 
      public int getidlogueo(){
          return idlogueo;

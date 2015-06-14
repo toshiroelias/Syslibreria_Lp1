@@ -72,14 +72,13 @@ public class UsuarioDAO implements InterfaceUsuario{
     @Override
     public boolean agregarUsuario(UsuarioDTO usuario) {
         boolean op = false;
-        sql="insert into usuario(idlogueo, Usuario, Clave, Apellido, Nombre, Cargo, "
-            + " ) values( null, '"+usuario.getidlogueo()
+        sql="insert into usuario(idlogueo, Usuario, Clave, Apellido, Nombre, Cargo ) values("+usuario.getidlogueo()
             
-                 +"', '"+usuario.getUsario()
+                 +", '"+usuario.getUsario()
                 +"', '"+usuario.getClave()
                  +"', '"+usuario.getApellido()
                  +"', '"+usuario.getNombre()
-                +"', '"+usuario.getCargo() +")";      
+                +"', '"+usuario.getCargo() +"')";      
     
         try {
             cx = Conexion.getConexion();
@@ -93,8 +92,28 @@ public class UsuarioDAO implements InterfaceUsuario{
 
     @Override
     public boolean editarUsuario(UsuarioDTO usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        boolean op = false;
+        sql="update usuario set idlogueo='"+usuario.getIdlogueo()
+            +"', usuario='"+usuario.getUsario()
+            +"', clave='"+usuario.getClave()
+            +"', apellido='"+usuario.getApellido()
+            +"', nombre='"+usuario.getNombre()
+            +"', cargo="+usuario.getCargo();
+           
+         try {
+            cx = Conexion.getConexion();
+            st = cx.createStatement();
+            st.executeUpdate(sql);
+            op=true;
+        } catch (Exception e) {
+        }
+        return op;
+        
     }
+        
+        //To change body of generated methods, choose Tools | Templates.
+    
 
     @Override
     public boolean eliminarUsuario(int id) {
