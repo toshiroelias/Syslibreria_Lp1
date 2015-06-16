@@ -5,17 +5,51 @@
  */
 package vista;
 
+import dao.PrecioDAO;
+import dto.PrecioDTO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Oropeza
  */
 public class Precioform extends javax.swing.JInternalFrame {
+      private PrecioDAO dAO = new PrecioDAO();
+     private List<PrecioDTO> lista = new ArrayList<>();
+     private DefaultTableModel dtm;
+     String  precio_unitario, precio_mayor, fecha;
+     PrecioDTO p;
+    
 
     /**
      * Creates new form Precioform
      */
     public Precioform() {
         initComponents();
+        cargarTabla();
+    }
+    
+     public void cargarTabla (){
+        dtm = (DefaultTableModel) tbdatosprecio.getModel();
+        lista = dAO.listarPrecio();
+        Object []datos = new Object[4];
+        for (int i=0 ; i<lista.size(); i++){
+            
+            datos[0]=lista.get(i).getIdprecio();
+            datos[1]=lista.get(i).getPrecio_unitario();
+            datos[2]=lista.get(i).getPrecio_mayor();
+            datos[3]=lista.get(i).getFecha();
+    
+          
+          
+            
+            dtm.addRow(datos);
+            
+         }
+        tbdatosprecio.setModel(dtm);
+        
     }
 
     /**
@@ -37,8 +71,10 @@ public class Precioform extends javax.swing.JInternalFrame {
         jTextField3 = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbdatosprecio = new javax.swing.JTable();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de Precio"));
 
         jLabel1.setText("IdPrecio:");
 
@@ -92,15 +128,30 @@ public class Precioform extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/registrarcon bitun.png"))); // NOI18N
 
+        tbdatosprecio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "IdPrecio", "Precio Unitario", "Precio Mayor", "Fecha"
+            }
+        ));
+        jScrollPane1.setViewportView(tbdatosprecio);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,7 +164,9 @@ public class Precioform extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
 
         pack();
@@ -128,8 +181,10 @@ public class Precioform extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tbdatosprecio;
     // End of variables declaration//GEN-END:variables
 }

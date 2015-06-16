@@ -63,6 +63,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
@@ -196,8 +197,14 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem7.setText("Modificar datos del Producto");
         jMenu5.add(jMenuItem7);
 
+        jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/datarefresh_toolbar_icon.gif"))); // NOI18N
         jMenuItem11.setText("Actualizar Precios");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem11);
 
         jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Modificarventas.png"))); // NOI18N
@@ -211,6 +218,15 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actulizarclientes.png"))); // NOI18N
         jMenuItem20.setText("Actualizar Clientes");
         jMenu5.add(jMenuItem20);
+
+        jMenuItem21.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem21.setText("Proveedor");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem21);
 
         jMenuBar1.add(jMenu5);
 
@@ -315,6 +331,25 @@ System.exit(0);
     private void jMenuItem19ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jMenuItem19ItemStateChanged
         // TODO add youhandling code here:
     }//GEN-LAST:event_jMenuItem19ItemStateChanged
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+
+            Proveedorform P = new Proveedorform();
+          jpdfondo.add(P);
+           P.setVisible(true);
+       
+        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+           Precioform p = new Precioform();
+          jpdfondo.add(p);
+           p.setVisible(true);
+       
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
   
     
     
@@ -393,6 +428,7 @@ System.exit(0);
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
